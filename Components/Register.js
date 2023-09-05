@@ -1,7 +1,31 @@
 import { View, Text, TextInput, Touchable, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 
 const Register = ({setDisplay}) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [cnfpassword, cnfsetPassword] = useState('');
+  const [error, setError] = useState({ field: "", message: "" });
+  const onSubmit = () => {
+    let loginError = { field: "", message: "" };
+    if (email === "") {
+      loginError.field = 'email';
+      loginError.message = "Email is required";
+      setError(loginError)
+    }else if(password === "") {
+      loginError.field = 'password';
+      loginError.message = "Password is required";
+      setError(loginError)
+    }else if(cnfpassword === "") {
+      loginError.field = 'cnfpassword';
+      loginError.message = "Password not matched";
+      setError(loginError)
+    }else{
+      setError({ field: "", message: "" })
+      setDisplay("User")
+    }
+  }
+
     
   return (
     <View style={style.register}>

@@ -75,6 +75,5 @@ const styles={
     text:
     {
         fontSize:20
-    }
-    
+    } 
 }
